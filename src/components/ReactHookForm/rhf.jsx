@@ -1,15 +1,22 @@
 import { useForm } from 'react-hook-form';
-function App() {
+
+function ReactHookForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form onSubmit={handleSubmit(onSubmit)} className="hook">
+      <label className="hook__text">Email</label>
       <input {...register('firstName')} />
       <input {...register('lastName', { required: true })} />
+      <input {...register('firstName')} />
       {errors.lastName && <p>Last name is required.</p>}
       <input {...register('age', { pattern: /\d+/ })} />
       {errors.age && <p>Please enter number for age.</p>}
@@ -17,3 +24,5 @@ function App() {
     </form>
   );
 }
+
+export default ReactHookForm;

@@ -1,24 +1,15 @@
 import { useState } from 'react'
 import './App.css'
+import ReactHookForm from './components/ReactHookForm/rhf'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <h1>React Form</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    <div>
+      <h1>New Product</h1>
+      <div>
+        <ReactHookForm />
       </div>
-      <p className="read-the-docs">
-        dddddd
-      </p>
-    </>
+    </div>
   )
 }
 
