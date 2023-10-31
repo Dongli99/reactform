@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import dongliLogo from './assets/logo_white.svg'
 import './App.css'
 
 function App() {
