@@ -11,6 +11,13 @@ function ReactHookForm() {
     console.log(data);
   };
 
+  const validateQuantity = (value) => {
+    if (value < 1) {
+      return 'Quantity must be at least 1';
+    }
+    return true;
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit) } className="form shadow-lg row g-3 bg-light rounded">
 
@@ -68,7 +75,7 @@ function ReactHookForm() {
         <input 
           type='number'
           className='col-sm-5'
-          {...register('quantity', { required: true } )}      
+          {...register('quantity', { required: true, validate: validateQuantity } )}      
         />
       </div>
 
@@ -79,9 +86,9 @@ function ReactHookForm() {
         Price:
         </label>
         <input 
-          type='number'
+          type='text'
           className='col-sm-5'
-          {...register('price', { required: true } )}      
+          {...register('price', { required: true, pattern:/^\d+(\.\d{1,2})?$/} )}      
         />
       </div>
 
@@ -107,8 +114,8 @@ function ReactHookForm() {
         {errors.productName && <p>Product Name is required!</p>}
         {errors.description && <p>Description is required!</p>}
         {errors.category && <p>category is required!</p>}
-        {errors.quantity && <p>Quantity is required!</p>}
-        {errors.price && <p>Price is required!</p>}
+        {errors.quantity && <p>{errors.quantity.message}</p>}
+        {errors.price && <p>Price must be a positive number!</p>}
       </div>
     </form>
   );
