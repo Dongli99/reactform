@@ -12,15 +12,104 @@ function ReactHookForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="hook">
-      <label className="hook__text">Email</label>
-      <input {...register('firstName')} />
-      <input {...register('lastName', { required: true })} />
-      <input {...register('firstName')} />
-      {errors.lastName && <p>Last name is required.</p>}
-      <input {...register('age', { pattern: /\d+/ })} />
-      {errors.age && <p>Please enter number for age.</p>}
-      <input type="submit" />
+    <form onSubmit={handleSubmit(onSubmit) } className="form shadow-lg row g-3 bg-light rounded">
+
+      {/* form title */}
+      <p className='fs-1'>New Product</p>
+
+      {/* product name */}
+      <div className="form-group">
+        <label 
+          className='col-sm-3'>
+          Product Name:
+        </label>
+        <input 
+          type = 'text'
+          className='col-sm-5'
+          {...register('productName', { required: true } )}      
+        />
+      </div>
+
+      {/* Description */}
+      <div className="form-group">
+        <label 
+          className='col-sm-3 align-top'>
+          Description:
+        </label>
+        <textarea 
+          className='col-sm-5'
+          rows="3"
+          {...register('description', { required: true })} 
+        />
+      </div>
+
+      {/* category */}
+      <div className="form-group">
+        <label 
+          className='col-sm-3'>
+          Category:
+        </label>
+        <select 
+          className="col-sm-5"
+          defaultValue="3"
+          {...register('category', { required: true })}>
+          <option value="1">Woman</option>
+          <option value="2">Men</option>
+          <option value="3">Unisex</option>
+        </select>
+      </div>
+
+      {/* Quantity */}
+      <div className="form-group">
+        <label 
+          className='col-sm-3'>
+        Quantity:
+        </label>
+        <input 
+          type='number'
+          className='col-sm-5'
+          {...register('quantity', { required: true } )}      
+        />
+      </div>
+
+      {/* Price */}
+      <div className="form-group">
+        <label 
+          className='col-sm-3'>
+        Price:
+        </label>
+        <input 
+          type='number'
+          className='col-sm-5'
+          {...register('price', { required: true } )}      
+        />
+      </div>
+
+      {/* buttons */}
+      <div className="d-flex justify-content-around">
+        <div></div>
+        <div></div>
+        <button 
+          className="d-inline p-2 bg-dark text-white" 
+          type="submit">
+        Submit
+        </button>
+        <button 
+          className="d-inline p-2 bg-dark text-white" 
+          type="reset">
+        Cancel
+        </button>
+        <div></div>
+      </div>
+
+      {/* validation warnings */}
+      <div className='text-danger'>
+        {errors.productName && <p>Product Name is required!</p>}
+        {errors.description && <p>Description is required!</p>}
+        {errors.category && <p>category is required!</p>}
+        {errors.quantity && <p>Quantity is required!</p>}
+        {errors.price && <p>Price is required!</p>}
+      </div>
     </form>
   );
 }

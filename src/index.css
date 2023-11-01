@@ -14,6 +14,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.form {
+  margin: 0 25% 0 25%;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
