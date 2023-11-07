@@ -11,6 +11,10 @@ function ReactHookForm() {
     console.log(data);
   };
 
+  const handleCancel = () => {
+    reset(); 
+  };
+
   const validateQuantity = (value) => {
     if (value < 1) {
       return 'Quantity must be at least 1';
@@ -103,7 +107,8 @@ function ReactHookForm() {
         </button>
         <button 
           className="d-inline p-2 bg-dark text-white" 
-          type="reset">
+          type="reset"
+          onClick={handleCancel}>
         Cancel
         </button>
         <div></div>
